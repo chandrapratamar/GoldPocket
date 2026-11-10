@@ -4,6 +4,11 @@
   <img src="public/img/GoldPocket-Logo.webp" alt="Gold Pocket" width="240" />
 </p>
 
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" /></a>
+  <a href="https://nimiq.com"><img src="https://img.shields.io/badge/Nimiq-Mini%20Apps%20Competition%20Cycle%20III-blue.svg" alt="Nimiq Mini Apps Competition" /></a>
+</p>
+
 **Nimiq Mini Apps Competition — Cycle III, Save Track**
 
 Self-custodial tokenized gold (PAXG) investing mini app for Nimiq Pay. Buy and sell PAXG with USDT on Polygon PoS — straight from your Nimiq Pay self-custodial wallet. No accounts, no custodians, no private-key handling.
@@ -11,7 +16,7 @@ Self-custodial tokenized gold (PAXG) investing mini app for Nimiq Pay. Buy and s
 ## Features
 
 - Connect Nimiq Pay wallet via `window.ethereum` (EIP-1193)
-- Real-time gold price 
+- Real-time gold price
 - Buy PAXG with USDT / sell PAXG back to USDT
 - Best-of swap quoting across Li.Fi + 1inch (parallel, auto-picks highest output)
 - Self-custodial execution — every transaction needs your wallet approval
@@ -79,4 +84,4 @@ PAXG on Polygon is the **Polygon PoS-bridged** version of the Ethereum PAXG (iss
 
 ## License
 
-All rights reserved. Built for the Nimiq Mini Apps Competition — Cycle III, Save Track.
+MIT — see [LICENSE](LICENSE). Built for the Nimiq Mini Apps Competition — Cycle III, Save Track.
