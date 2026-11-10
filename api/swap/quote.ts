@@ -1,11 +1,12 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import {
-  PAXG_ADDRESS,
-  PAXG_DECIMALS,
-  POLYGON_CHAIN_ID,
-  USDT_ADDRESS,
-  USDT_DECIMALS,
-} from '../../src/config/contracts'
+
+// Inlined from src/config/contracts so the serverless function has no runtime
+// dependency on the src/ tree (which is not deployed to Vercel's runtime).
+const POLYGON_CHAIN_ID = 137
+const USDT_ADDRESS = '0xc2132D05D31c914a87C6611C10748AEb04B58e8F'
+const PAXG_ADDRESS = '0x553d3D295e0f695B9228246232eDF400ed3560B5'
+const USDT_DECIMALS = 6
+const PAXG_DECIMALS = 18
 
 const UPSTREAM_TIMEOUT_MS = 12_000
 /** 1inch v6 router — the spender its swap calldata expects approval for. */

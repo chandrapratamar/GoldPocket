@@ -13,8 +13,6 @@
   },
   "include": [
     "quotes/gold.ts",
-    "swap/quote.ts",
-    "../src/types/index.ts",
-    "../src/config/contracts.ts"
+    "swap/quote.ts"
   ]
 }

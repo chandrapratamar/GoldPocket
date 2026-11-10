@@ -1,5 +1,13 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import type { GoldQuote } from '../../src/types'
+
+// Inlined from src/types so the serverless function has no runtime dependency
+// on the src/ tree (which is not deployed to Vercel's runtime).
+interface GoldQuote {
+  pricePerTroyOunce: number
+  currency: 'USD'
+  source: string
+  fetchedAt: string
+}
 
 const CACHE_CONTROL = 'public, max-age=0, s-maxage=60, stale-while-revalidate=300'
 const UPSTREAM_TIMEOUT_MS = 8_000
