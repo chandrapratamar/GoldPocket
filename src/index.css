@@ -1,0 +1,311 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans:
+    'Inter Variable', 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    sans-serif;
+
+  --color-bg: #101010;
+  --color-card: #1c1c1e;
+  --color-card-elevated: #2a2a2d;
+
+  --color-text: #ffffff;
+  --color-text-soft: #d4d4d4;
+  --color-text-muted: #b0b0b0;
+  --color-text-dim: #8a8a8a;
+
+  --color-gold: #d4af37;
+  --color-gold-light: #f5d77a;
+  --color-gold-accent: #e9c75f;
+  --color-gold-dark: #a8841f;
+
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+
+  --shadow-md: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 1.25rem rgba(212, 175, 55, 0.15);
+}
+
+:root {
+  /* The host WebView lays the app out above the system navigation bar but still reports
+     its height as a safe-area inset. Reserving all of it would float the bottom nav above
+     a band of empty space, so cap the reservation at 20px — enough to clear a home
+     indicator without reserving a whole system bar. */
+  --safe-b: min(env(safe-area-inset-bottom, 0px), 5px);
+  --nav-h: calc(3.5rem + var(--safe-b));
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    text-size-adjust: 100%;
+    /* Global scale. Every rem-based Tailwind size (type, spacing, radii) follows this. */
+    font-size: 81%;
+  }
+
+  body {
+    @apply bg-bg text-text font-sans antialiased selection:bg-gold selection:text-bg;
+    overscroll-behavior-y: contain;
+  }
+
+  button {
+    touch-action: manipulation;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* A restrained, premium balance surface: dark first, gold only where it matters. */
+  .gold-balance-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 7.15rem;
+    border: 1px solid rgba(220, 177, 67, 0.38);
+    background:
+      radial-gradient(ellipse at 88% 16%, rgba(213, 169, 63, 0.16), transparent 35%),
+      linear-gradient(118deg, #211d15 0%, #171614 54%, #201a0e 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 236, 177, 0.08),
+      0 12px 28px rgba(0, 0, 0, 0.22),
+      0 0 22px rgba(197, 151, 43, 0.055);
+  }
+  .gold-balance-card::before {
+    position: absolute;
+    z-index: -1;
+    right: -5.5rem;
+    bottom: -7.25rem;
+    width: 19rem;
+    height: 12rem;
+    border: 1px solid rgba(221, 178, 76, 0.13);
+    border-radius: 50%;
+    content: '';
+    transform: rotate(-18deg);
+    box-shadow:
+      0 0 0 1.15rem rgba(221, 178, 76, 0.025),
+      0 0 0 2.3rem rgba(221, 178, 76, 0.018);
+  }
+  .gold-balance-card::after {
+    position: absolute;
+    right: 1.25rem;
+    bottom: 0;
+    left: 1.25rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(236, 195, 91, 0.42), transparent);
+    content: '';
+  }
+  .gold-balance-content {
+    position: relative;
+    z-index: 2;
+    max-width: 78%;
+  }
+  .gold-balance-label {
+    color: #d8c9a4;
+    font-size: 0.72rem;
+    font-weight: 650;
+    letter-spacing: 0.16em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+  .gold-balance-kicker-dot {
+    width: 0.38rem;
+    height: 0.38rem;
+    flex: none;
+    border-radius: 999px;
+    background: #e4bd59;
+    box-shadow: 0 0 9px rgba(228, 189, 89, 0.58);
+  }
+  .gold-balance-value {
+    background: linear-gradient(100deg, #fff1bd 0%, #e7c15e 52%, #f8dfa0 100%);
+    background-clip: text;
+    color: transparent;
+    font-size: clamp(2.2rem, 8vw, 2.85rem);
+    font-weight: 750;
+    letter-spacing: -0.055em;
+    line-height: 1.12;
+    -webkit-background-clip: text;
+  }
+  .gold-balance-unit {
+    color: #e7d8b4;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .gold-balance-fiat {
+    margin-top: 0.3rem;
+    color: #b8b0a1;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .gold-balance-emblem {
+    position: absolute;
+    top: 50%;
+    right: 1.15rem;
+    display: grid;
+    width: 5.1rem;
+    height: 5.1rem;
+    place-items: center;
+    border: 1px solid rgba(226, 187, 91, 0.25);
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(217, 173, 63, 0.13),
+      rgba(217, 173, 63, 0.025) 68%,
+      transparent 70%
+    );
+    opacity: 0.58;
+    transform: translateY(-50%);
+  }
+  .gold-balance-emblem-ring {
+    position: absolute;
+    inset: -0.45rem;
+    border: 1px solid rgba(226, 187, 91, 0.15);
+    border-radius: 50%;
+  }
+  .gold-balance-emblem img {
+    width: 3.55rem;
+    height: 3.55rem;
+    border-radius: 50%;
+    object-fit: cover;
+    opacity: 0.62;
+    filter: saturate(0.72);
+  }
+  .home-market-card {
+    border-color: rgba(221, 178, 76, 0.2);
+    background: linear-gradient(125deg, rgba(38, 33, 24, 0.92), #1c1c1e 58%);
+  }
+  .home-holdings-card {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: linear-gradient(145deg, #20201f, #1a1a1b 72%);
+  }
+
+  /* Primary gold button / hero fills. Kept in a layer so `disabled:` utilities can override. */
+  .btn-gold {
+    background-image: linear-gradient(135deg, #f5d77a 0%, #d4af37 55%, #b8911f 100%);
+  }
+  .bg-gold-gradient {
+    background-image: linear-gradient(135deg, #f5d77a 0%, #d4af37 55%, #b8911f 100%);
+  }
+  .fade-in {
+    animation: fadeIn 0.18s ease-out both;
+  }
+  .backdrop-enter {
+    animation: fadeIn 0.2s ease-out both;
+  }
+  .sheet-enter {
+    animation: slideUp 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .check-pop {
+    animation: checkPop 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  }
+  .skeleton {
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 25%,
+      rgba(255, 255, 255, 0.12) 50%,
+      rgba(255, 255, 255, 0.05) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.4s linear infinite;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  /* The root font-size is scaled to 90%, so interactive targets are pinned back to the
+     44px minimum instead of shrinking with everything else. */
+  .min-h-10 {
+    min-height: 40px;
+  }
+  .min-h-11 {
+    min-height: 44px;
+  }
+  .min-h-12 {
+    min-height: 44px;
+  }
+  .size-11 {
+    width: 44px;
+    height: 44px;
+  }
+  .hairline {
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+  .hairline-gold {
+    border-width: 1px;
+    border-color: rgba(212, 175, 55, 0.5);
+  }
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .shadow-premium {
+    box-shadow: var(--shadow-md);
+  }
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  .pb-safe {
+    padding-bottom: max(var(--safe-b), 0.75rem);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes checkPop {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .backdrop-enter,
+  .sheet-enter,
+  .check-pop,
+  .skeleton {
+    animation: none;
+  }
+}
