@@ -44,7 +44,7 @@ Self-custodial tokenized gold (PAXG) investing mini app for Nimiq Pay. Buy and s
 | Priority | Feature                                                                                                                                                              |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | P1       | **Portfolio value and profit/loss tracking** — cost basis from trade history. Shows real returns, not just balances.                                                 |
-| P1       | **NIM → Gold in one flow** — fund a pocket straight from a NIM balance, routed to USDT then PAXG through a bridge aggregator. The strongest "why Nimiq Pay" feature. |
+| P1       | **NIM → Gold in one flow** — fund a pocket straight from a NIM balance, routed to USDT then PAXG through a bridge aggregator (SwapSpace). The strongest "why Nimiq Pay" feature. |
 | P1       | **Auto-save (DCA)** — weekly/monthly recurring buys. Non-custodial, so starts as a reminder + one-tap confirm. Core savings feature for the Save Track.              |
 | P1       | **Gasless swaps** — a paymaster sponsors gas so users never need to hold POL. Likely the biggest friction point for newcomers.                                       |
 | P2       | **Savings goals** — "Gold for my wedding, 40% there," shown in grams, not just dollars. Emotional and visual.                                                        |
