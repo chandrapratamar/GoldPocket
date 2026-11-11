@@ -22,8 +22,37 @@ Self-custodial tokenized gold (PAXG) investing mini app for Nimiq Pay. Buy and s
 - Self-custodial execution — every transaction needs your wallet approval
 - Transaction receipts with tx hash, route, fees, and PolygonScan link
 - Local activity history with provider and amounts
-- Mobile-first layout (pinned keypad + CTA, no scroll)
+- Mobile-first layout (pinned keypad and CTA, no scroll)
+- Swipeable banner carousel with autoplay
 - Bridged PAXG risk disclosure (Polygon PoS)
+
+## Roadmap
+
+### Completed
+
+1. ~~Wallet connection via `window.ethereum` + Polygon chain switch (`0x89`).~~
+2. ~~Token balances via viem `balanceOf`; decimals read from contracts.~~
+3. ~~Swap quoting and execution through the provider (Li.Fi / 1inch) with best-of comparison.~~
+4. ~~Transaction history persisted locally.~~
+5. ~~Mobile-first layout with pinned keypad and CTA.~~
+6. ~~Bridged PAXG risk disclosure (Polygon PoS).~~
+7. ~~Banner carousel with autoplay.~~
+8. ~~Receipt page with tx hash and PolygonScan link.~~
+
+### Planned
+
+| Priority | Feature                                                                                                                                                              |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| P1       | **Portfolio value and profit/loss tracking** — cost basis from trade history. Shows real returns, not just balances.                                                 |
+| P1       | **NIM → Gold in one flow** — fund a pocket straight from a NIM balance, routed to USDT then PAXG through a bridge aggregator. The strongest "why Nimiq Pay" feature. |
+| P1       | **Auto-save (DCA)** — weekly/monthly recurring buys. Non-custodial, so starts as a reminder + one-tap confirm. Core savings feature for the Save Track.              |
+| P1       | **Gasless swaps** — a paymaster sponsors gas so users never need to hold POL. Likely the biggest friction point for newcomers.                                       |
+| P2       | **Savings goals** — "Gold for my wedding, 40% there," shown in grams, not just dollars. Emotional and visual.                                                        |
+| P2       | **Grams/oz and local currency display** — gold is already a savings instinct in many regions; show value in units people use.                                        |
+| P2       | **Receipt polish** — share tx link, pending → confirmed states.                                                                                                      |
+| P3       | **Gift gold** — send gold to a friend by link, with a message. Useful and spreads the app organically.                                                               |
+| P3       | **Shared pockets** — family or friend groups saving toward a goal together.                                                                                          |
+| P3       | **Languages** — English plus Bahasa Indonesia, Spanish, and others.                                                                                                  |
 
 ## Tech stack
 
